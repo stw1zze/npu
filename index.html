@@ -3,26 +3,21 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>НПУ GTA - Портал</title>
+<title>НПУ GTA — Керівництво</title>
 
-<!-- Подключаем Google Fonts: Poppins -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
 
 <style>
   body {
     margin: 0;
-    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #001f4d 0%, #0057b7 70%, #ffffff 100%);
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
     color: #002b55;
+    min-height: 100vh;
+    position: relative;
   }
-
   .logo-bg {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none;
     z-index: 0;
   }
@@ -30,12 +25,8 @@
     position: absolute;
     width: 120px;
     opacity: 0.1;
-    filter: drop-shadow(0 0 2px rgba(0,0,0,0.15));
     border-radius: 20px;
-    user-select: none;
   }
-
-  /* Расположение логотипов с разными координатами и поворотами */
   .logo-bg img:nth-child(1) { top: 5%; left: 5%; transform: rotate(10deg);}
   .logo-bg img:nth-child(2) { top: 10%; left: 25%; transform: rotate(-15deg);}
   .logo-bg img:nth-child(3) { top: 15%; left: 60%; transform: rotate(5deg);}
@@ -48,19 +39,18 @@
   .logo-bg img:nth-child(10){ top: 85%; left: 65%; transform: rotate(-15deg);}
 
   header {
-    position: relative;
     background: rgba(255 255 255 / 0.8);
     padding: 20px 30px;
     border-radius: 20px;
-    margin: 30px auto;
+    margin: 30px auto 15px;
     max-width: 1200px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
     z-index: 1;
   }
-
   header h1 {
     margin: 0;
     color: #003b8e;
@@ -68,61 +58,46 @@
     font-size: 2.5rem;
     letter-spacing: 1.2px;
   }
-
-  nav button {
+  nav {
+    display: flex;
+    gap: 15px;
+  }
+  nav a {
     background: #0057b7;
-    border: none;
-    padding: 12px 26px;
     color: white;
+    padding: 12px 26px;
+    border-radius: 15px;
+    text-decoration: none;
     font-weight: 600;
     font-size: 1.1rem;
-    border-radius: 15px;
-    cursor: pointer;
     transition: background-color 0.3s ease;
-    font-family: 'Poppins', sans-serif;
   }
-  nav button:hover {
+  nav a:hover {
     background: #003b8e;
   }
 
   main {
-    position: relative;
     max-width: 1000px;
-    margin: 40px auto;
+    margin: 0 auto 60px;
     background: rgba(255 255 255 / 0.9);
     padding: 45px 35px;
     border-radius: 25px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    z-index: 1;
+    color: #002b55;
+    text-align: center;
   }
 
   main h2 {
-    margin-top: 0;
-    color: #001f4d;
     font-size: 2.8rem;
-    text-align: center;
+    margin-bottom: 30px;
     font-weight: 700;
-    letter-spacing: 1px;
   }
 
-  main p {
-    font-size: 1.25rem;
-    line-height: 1.7;
-    color: #004080;
-    text-align: center;
-    max-width: 720px;
-    margin: 25px auto 50px;
-    font-weight: 400;
-  }
-
-  /* Раздел Керівництво */
   .leadership {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 32px;
-    max-width: 900px;
-    margin: 0 auto 60px;
   }
 
   .leader-card {
@@ -130,11 +105,9 @@
     border-radius: 20px;
     box-shadow: 0 5px 15px rgba(0, 87, 183, 0.3);
     width: 150px;
-    text-align: center;
     padding: 20px 15px 35px;
     color: #003b8e;
     font-weight: 600;
-    font-family: 'Poppins', sans-serif;
     transition: transform 0.25s ease;
   }
   .leader-card:hover {
@@ -153,8 +126,6 @@
   .leader-card .position {
     font-size: 1rem;
     margin-bottom: 8px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
   }
   .leader-card .name {
     font-size: 1.1rem;
@@ -166,42 +137,6 @@
     padding: 22px 10px;
     color: #004080;
     font-weight: 600;
-    user-select: none;
-    font-family: 'Poppins', sans-serif;
-    z-index: 1;
-  }
-
-  @media (max-width: 600px) {
-    header {
-      flex-direction: column;
-      gap: 15px;
-      padding: 15px 20px;
-    }
-    nav button {
-      width: 100%;
-    }
-    main {
-      margin: 20px 15px;
-      padding: 30px 20px;
-    }
-    main h2 {
-      font-size: 2rem;
-    }
-    main p {
-      font-size: 1.1rem;
-    }
-    .leadership {
-      gap: 20px;
-    }
-    .leader-card {
-      width: 130px;
-      padding-bottom: 25px;
-    }
-    .leader-card img {
-      width: 90px;
-      height: 90px;
-      border-width: 3px;
-    }
   }
 </style>
 </head>
@@ -223,62 +158,53 @@
   <header>
     <h1>НПУ GTA</h1>
     <nav>
-      <button onclick="alert('Функція поки не доступна')">Увійти</button>
-      <button onclick="alert('Функція поки не доступна')">Реєстрація</button>
+      <a href="grafik.html">Графік Роботи</a>
     </nav>
   </header>
 
   <main>
-    <h2>Вітаємо на внутрішньому порталі Національної поліції</h2>
-    <p>Це демо-сайт для працівників НПУ GTA. Тут буде інформація, документи і сервіс для ведення службових справ. Функції входу і реєстрації поки що не підключені.</p>
+    <h2>Керівництво</h2>
+    <div class="leadership">
 
-    <section>
-      <h2>Керівництво</h2>
-      <div class="leadership">
-
-        <!-- Генерал -->
-        <div class="leader-card">
-          <img src="general.png" alt="Генерал Ваня Бішоп" />
-          <div class="position">Генерал</div>
-          <div class="name">Ваня Бішоп</div>
-        </div>
-
-        <!-- Полковники -->
-        <div class="leader-card">
-          <img src="polkovnik.png" alt="Полковник Іван Коваль" />
-          <div class="position">Полковник</div>
-          <div class="name">Вакантно</div>
-        </div>
-        <div class="leader-card">
-          <img src="polkovnik.png" alt="Полковник Олена Мельник" />
-          <div class="position">Полковник</div>
-          <div class="name">Вакантно</div>
-        </div>
-        <div class="leader-card">
-          <img src="polkovnik.png" alt="Полковник Сергій Петренко" />
-          <div class="position">Полковник</div>
-          <div class="name">Вакантно</div>
-        </div>
-        <!-- Вакантні -->
-        <div class="leader-card">
-          <img src="polkovnik.png" alt="Вакантно" />
-          <div class="position">Полковник</div>
-          <div class="name">Вакантно</div>
-        </div>
-        <div class="leader-card">
-          <img src="polkovnik.png" alt="Вакантно" />
-          <div class="position">Полковник</div>
-          <div class="name">Вакантно</div>
-        </div>
-        <div class="leader-card">
-          <img src="polkovnik.png" alt="Вакантно" />
-          <div class="position">Полковник</div>
-          <div class="name">Вакантно</div>
-        </div>
-
+      <div class="leader-card">
+        <img src="general.png" alt="Генерал Ваня Бішоп" />
+        <div class="position">Генерал</div>
+        <div class="name">Ваня Бішоп</div>
       </div>
-    </section>
 
+      <div class="leader-card">
+        <img src="polkovnik.png" alt="Полковник Іван Коваль" />
+        <div class="position">Полковник</div>
+        <div class="name">Іван Коваль</div>
+      </div>
+      <div class="leader-card">
+        <img src="polkovnik.png" alt="Полковник Олена Мельник" />
+        <div class="position">Полковник</div>
+        <div class="name">Олена Мельник</div>
+      </div>
+      <div class="leader-card">
+        <img src="polkovnik.png" alt="Полковник Сергій Петренко" />
+        <div class="position">Полковник</div>
+        <div class="name">Сергій Петренко</div>
+      </div>
+
+      <div class="leader-card">
+        <img src="polkovnik.png" alt="Вакантно" />
+        <div class="position">Полковник</div>
+        <div class="name">Вакантно</div>
+      </div>
+      <div class="leader-card">
+        <img src="polkovnik.png" alt="Вакантно" />
+        <div class="position">Полковник</div>
+        <div class="name">Вакантно</div>
+      </div>
+      <div class="leader-card">
+        <img src="polkovnik.png" alt="Вакантно" />
+        <div class="position">Полковник</div>
+        <div class="name">Вакантно</div>
+      </div>
+
+    </div>
   </main>
 
   <footer>
