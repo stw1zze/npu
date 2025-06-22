@@ -1,155 +1,230 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>НПУ GTA — Графік Роботи</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Графік Роботи — СБУ RP GTA</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(135deg, #004085 0%, #ffffff 100%);
+      margin: 0;
+      min-height: 100vh;
+      color: #004085;
+      overflow-x: hidden;
+    }
 
-<style>
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #001f4d 0%, #0057b7 70%, #ffffff 100%);
-    color: #002b55;
-    min-height: 100vh;
-    position: relative;
-  }
-  .logo-bg {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none;
-    z-index: 0;
-  }
-  .logo-bg img {
-    position: absolute;
-    width: 120px;
-    opacity: 0.1;
-    border-radius: 20px;
-  }
-  .logo-bg img:nth-child(1) { top: 5%; left: 5%; transform: rotate(10deg);}
-  .logo-bg img:nth-child(2) { top: 10%; left: 25%; transform: rotate(-15deg);}
-  .logo-bg img:nth-child(3) { top: 15%; left: 60%; transform: rotate(5deg);}
-  .logo-bg img:nth-child(4) { top: 30%; left: 40%; transform: rotate(-10deg);}
-  .logo-bg img:nth-child(5) { top: 35%; left: 75%; transform: rotate(20deg);}
-  .logo-bg img:nth-child(6) { top: 50%; left: 15%; transform: rotate(-5deg);}
-  .logo-bg img:nth-child(7) { top: 55%; left: 55%; transform: rotate(15deg);}
-  .logo-bg img:nth-child(8) { top: 65%; left: 80%; transform: rotate(-20deg);}
-  .logo-bg img:nth-child(9) { top: 75%; left: 35%; transform: rotate(10deg);}
-  .logo-bg img:nth-child(10){ top: 85%; left: 65%; transform: rotate(-15deg);}
+    /* Навигация */
+    nav {
+      background: #0056b3;
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+    }
+    nav .container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-radius: 20px;
+      padding: 8px 20px;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    nav a:hover {
+      background: #003d7a;
+    }
 
-  header {
-    background: rgba(255 255 255 / 0.8);
-    padding: 20px 30px;
-    border-radius: 20px;
-    margin: 30px auto 15px;
-    max-width: 1200px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
-    z-index: 1;
-  }
-  header h1 {
-    margin: 0;
-    color: #003b8e;
-    font-weight: 700;
-    font-size: 2.5rem;
-    letter-spacing: 1.2px;
-  }
-  nav {
-    display: flex;
-    gap: 15px;
-  }
-  nav a {
-    background: #0057b7;
-    color: white;
-    padding: 12px 26px;
-    border-radius: 15px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.1rem;
-    transition: background-color 0.3s ease;
-  }
-  nav a:hover {
-    background: #003b8e;
-  }
+    /* Фон с логотипами */
+    .background-logos {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+    .background-logos img {
+      position: absolute;
+      width: 100px;
+      opacity: 0.1;
+      filter: drop-shadow(0 0 5px rgba(0,0,0,0.2));
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+    }
+    .logo1 { top: 10%; left: 5%; animation: moveX 15s infinite alternate; }
+    .logo2 { top: 25%; left: 20%; animation: moveY 14s infinite alternate; }
+    .logo3 { top: 40%; left: 35%; animation: moveX 18s infinite alternate; }
+    .logo4 { top: 55%; left: 50%; animation: moveY 16s infinite alternate; }
+    .logo5 { top: 70%; left: 65%; animation: moveX 13s infinite alternate; }
+    .logo6 { top: 85%; left: 80%; animation: moveY 17s infinite alternate; }
+    .logo7 { top: 15%; left: 75%; animation: moveX 20s infinite alternate; }
+    .logo8 { top: 30%; left: 90%; animation: moveY 19s infinite alternate; }
+    .logo9 { top: 60%; left: 10%; animation: moveX 12s infinite alternate; }
+    .logo10 { top: 80%; left: 30%; animation: moveY 15s infinite alternate; }
 
-  main {
-    max-width: 700px;
-    margin: 0 auto 60px;
-    background: rgba(255 255 255 / 0.9);
-    padding: 40px 35px;
-    border-radius: 25px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-    color: #002b55;
-  }
+    @keyframes moveX {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(25px); }
+    }
+    @keyframes moveY {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(20px); }
+    }
 
-  main h2 {
-    font-size: 2.8rem;
-    margin-bottom: 25px;
-    font-weight: 700;
-    text-align: center;
-  }
+    /* Заголовок */
+    h1 {
+      text-align: center;
+      margin-top: 60px;
+      margin-bottom: 40px;
+      font-weight: 700;
+      font-size: 2.8rem;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+      color: #002752;
+      position: relative;
+      z-index: 1;
+    }
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 1.2rem;
-  }
-  th, td {
-    padding: 14px 18px;
-    border-bottom: 1px solid #0057b7;
-    text-align: left;
-  }
-  th {
-    background: #0057b7;
-    color: white;
-    border-radius: 15px 15px 0 0;
-  }
-  tr:last-child td {
-    border-bottom: none;
-  }
-  td:nth-child(2) {
-    width: 150px;
-  }
-  td:nth-child(3) {
-    width: 180px;
-  }
-</style>
+    /* Контейнер графика */
+    .schedule-container {
+      max-width: 600px;
+      margin: 0 auto 60px;
+      background: rgba(255 255 255 / 0.9);
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgb(0 70 160 / 0.25);
+      padding: 30px 25px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Список расписания */
+    ul.schedule-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    ul.schedule-list li {
+      background: #d0e3ff;
+      border-left: 6px solid #004085;
+      margin-bottom: 18px;
+      padding: 16px 22px;
+      border-radius: 15px;
+      font-weight: 600;
+      font-size: 1.3rem;
+      color: #003366;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 5px 12px rgb(0 70 160 / 0.15);
+      cursor: default;
+      transition: background-color 0.3s ease;
+    }
+    ul.schedule-list li:hover {
+      background: #a6c8ff;
+      box-shadow: 0 8px 22px rgb(0 70 160 / 0.3);
+    }
+
+    /* Иконка часов */
+    ul.schedule-list li i.fa-clock {
+      margin-right: 12px;
+      color: #004085;
+      font-size: 1.4rem;
+    }
+
+    /* Тайм-бейдж */
+    .time-badge {
+      background-color: #004085;
+      color: white;
+      padding: 7px 18px;
+      border-radius: 25px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      box-shadow: 0 3px 10px rgb(0 70 160 / 0.5);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 140px;
+      justify-content: center;
+    }
+    .time-badge i.fa-clock {
+      font-size: 1.3rem;
+    }
+
+    /* Адаптив */
+    @media (max-width: 600px) {
+      .schedule-container {
+        max-width: 95%;
+        padding: 20px 15px;
+      }
+      ul.schedule-list li {
+        font-size: 1.1rem;
+        padding: 14px 16px;
+      }
+      .time-badge {
+        min-width: 110px;
+        font-size: 1rem;
+        padding: 6px 12px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <div class="logo-bg" aria-hidden="true">
-    <img src="logo.png" alt="" />
-    <img src="logo.png" alt="" />
-    <img src="logo.png" alt="" />
-    <img src="logo.png" alt="" />
-    <img src="logo.png" alt="" />
-    <img src="logo.png" alt="" />
-    <img src="logo.png" alt="" />
-    <img src="logo.png" alt="" />
-    <img src="logo.png" alt="" />
-    <img src="logo.png" alt="" />
+  <div class="background-logos" aria-hidden="true">
+    <img src="logo.png" alt="" class="logo1" />
+    <img src="logo.png" alt="" class="logo2" />
+    <img src="logo.png" alt="" class="logo3" />
+    <img src="logo.png" alt="" class="logo4" />
+    <img src="logo.png" alt="" class="logo5" />
+    <img src="logo.png" alt="" class="logo6" />
+    <img src="logo.png" alt="" class="logo7" />
+    <img src="logo.png" alt="" class="logo8" />
+    <img src="logo.png" alt="" class="logo9" />
+    <img src="logo.png" alt="" class="logo10" />
   </div>
 
-  <header>
-    <h1>НПУ GTA</h1>
-    <nav>
-      <a href="index.html">Керівництво</a>
-    </nav>
-  </header>
+  <nav>
+    <div class="container">
+      <a href="index.html">Головна</a>
+      <a href="grafik.html" style="background:#003d7a;">Графік Роботи</a>
+    </div>
+  </nav>
 
-  <main>
-    <h2>Графік Роботи</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>День</th>
-          <th>Години роботи</th>
-          <th>Перерви</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Понеділок</td><td>09:00 – 21:
+  <h1>Графік Робочого Дня</h1>
+
+  <div class="schedule-container">
+    <ul class="schedule-list" aria-label="Графік роботи">
+      <li><span><i class="fa fa-clock"></i> Понеділок</span> <div class="time-badge"><i class="fa fa-clock"></i> 09:00 – 21:00</div></li>
+      <li><span><i class="fa fa-clock"></i> Вівторок</span> <div class="time-badge"><i class="fa fa-clock"></i> 09:00 – 21:00</div></li>
+      <li><span><i class="fa fa-clock"></i> Середа</span> <div class="time-badge"><i class="fa fa-clock"></i> 09:00 – 21:00</div></li>
+      <li><span><i class="fa fa-clock"></i> Четвер</span> <div class="time-badge"><i class="fa fa-clock"></i> 09:00 – 21:00</div></li>
+      <li><span><i class="fa fa-clock"></i> П’ятниця</span> <div class="time-badge"><i class="fa fa-clock"></i> 09:00 – 21:00</div></li>
+      <li><span><i class="fa fa-clock"></i> Субота</span> <div class="time-badge"><i class="fa fa-clock"></i> 10:00 – 20:00</div></li>
+      <li><span><i class="fa fa-clock"></i> Неділя</span> <div class="time-badge"><i class="fa fa-clock"></i> 10:00 – 20:00</div></li>
+    </ul>
+  </div>
+
+  <h1>Перерви</h1>
+
+  <div class="schedule-container">
+    <ul class="schedule-list" aria-label="Перерви">
+      <li><span><i class="fa fa-clock"></i> Обідня перерва</span> <div class="time-badge"><i class="fa fa-clock"></i> 12:00–13:00, 17:00–18:00</div></li>
+    </ul>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</body>
+</html>
