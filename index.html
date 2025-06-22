@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>НПУ GTA - Портал</title>
+<style>
+  /* Фон с градиентом */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #001f4d 0%, #0057b7 70%, #ffffff 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    color: #002b55;
+  }
+
+  /* Логотипы разбросанные */
+  .logo-bg {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .logo-bg img {
+    position: absolute;
+    width: 80px;
+    opacity: 0.1;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.15));
+    border-radius: 20px;
+    user-select: none;
+  }
+  /* Разбросанные позиции */
+  .logo-bg img:nth-child(1) { top: 5%; left: 10%; transform: rotate(15deg);}
+  .logo-bg img:nth-child(2) { top: 20%; left: 80%; transform: rotate(-10deg);}
+  .logo-bg img:nth-child(3) { top: 60%; left: 30%; transform: rotate(25deg);}
+  .logo-bg img:nth-child(4) { top: 75%; left: 70%; transform: rotate(-20deg);}
+  .logo-bg img:nth-child(5) { top: 40%; left: 50%; transform: rotate(5deg);}
+
+  header {
+    position: relative;
+    background: rgba(255 255 255 / 0.8);
+    padding: 20px 30px;
+    border-radius: 20px;
+    margin: 30px auto;
+    max-width: 1200px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+  }
+
+  header h1 {
+    margin: 0;
+    color: #003b8e;
+    font-weight: 700;
+    font-size: 2rem;
+  }
+
+  nav button {
+    background: #0057b7;
+    border: none;
+    padding: 10px 22px;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  nav button:hover {
+    background: #003b8e;
+  }
+
+  main {
+    position: relative;
+    max-width: 1000px;
+    margin: 40px auto;
+    background: rgba(255 255 255 / 0.9);
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    z-index: 1;
+  }
+
+  main h2 {
+    margin-top: 0;
+    color: #001f4d;
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  main p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #004080;
+    text-align: center;
+    max-width: 700px;
+    margin: 20px auto 0;
+  }
+
+  footer {
+    text-align: center;
+    padding: 20px 10px;
+    color: #004080;
+    font-weight: 600;
+    user-select: none;
+    z-index: 1;
+  }
+
+  /* Для мобильных */
+  @media (max-width: 600px) {
+    header {
+      flex-direction: column;
+      gap: 15px;
+      padding: 15px 20px;
+    }
+    nav button {
+      width: 100%;
+    }
+    main {
+      margin: 20px 15px;
+      padding: 30px 20px;
+    }
+    main h2 {
+      font-size: 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <div class="logo-bg" aria-hidden="true">
+    <img src="logo.png" alt="" />
+    <img src="logo.png" alt="" />
+    <img src="logo.png" alt="" />
+    <img src="logo.png" alt="" />
+    <img src="logo.png" alt="" />
+  </div>
+
+  <header>
+    <h1>НПУ GTA</h1>
+    <nav>
+      <button onclick="alert('Функція поки не доступна')">Увійти</button>
+      <button onclick="alert('Функція поки не доступна')">Реєстрація</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Вітаємо на внутрішньому порталі Національної поліції</h2>
+    <p>Це демо-сайт для працівників НПУ GTA. Тут буде інформація, документи і сервіс для ведення службових справ. Функції входу і реєстрації поки що не підключені.</p>
+  </main>
+
+  <footer>
+    © 2025 НПУ GTA — Всі права захищені
+  </footer>
+
+</body>
+</html>
